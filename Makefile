@@ -10,14 +10,17 @@ all:
 compile:
 	nasm -f elf32 -g boot.s -o boot.o
 	gcc -m32 -g -fno-stack-protector -fno-builtin -c kernel.c -o kernel.o
-	ld -m elf_i386 -T linker.ld -o kernel boot.o kernel.o
+	gcc -m32 -g -fno-stack-protector -fno-builtin -c vga.c -o vga.o
+	ld -m elf_i386 -T linker.ld -o kernel boot.o kernel.o vga.o
 	mv kernel zaytun/boot/kernel
 
 
 clean:
-	rm boot.o
-	rm kernel.o
-	rm disk/Zaytun.iso
+	rm -f boot.o
+	rm -f kernel.o
+	rm -f vga.o
+	rm -f kernel
+	rm -f disk/Zaytun.iso
 
 
 image:
