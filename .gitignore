@@ -1,3 +1,6 @@
 disk
 *.o
 zaytun/boot/kernel
+.zig-cache
+zig-out
+mnt

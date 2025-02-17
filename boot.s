@@ -6,10 +6,10 @@ section .text                       ; .text section generally read-only and exec
     DD 0x00000000                   ; Flags just all zeros right now
     DD -(0x1BADB002 + 0x00000000)   ; Check Sum value is negation of sum of all values on above
 
-global start                        ; Declarin Function start as global
+global _start                        ; Declarin Function start as global
 extern kmain                        ; I need ref to external function kmain
 
-start:
+_start:
     CLI                             ; Disable CPU interrupts
     MOV esp, stack_space            ; Init Stack Pointer
     CALL kmain                      ; call kmain external function
